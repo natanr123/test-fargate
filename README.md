@@ -34,7 +34,8 @@
     - Click on Next Step
     - Click on Create Service
 - Create a Code pipeline
-    - Pipline name: hello-world-pipeline
+    - Pipeline name: hello-world-pipeline
+    - Remember the role name (it should be AWSCodePipelineServiceRole-us-west-2-hello-world-pipeline)
     - Click Next
     - Set the Repository to your github repository
     - Click Next
@@ -56,4 +57,14 @@
     - Cluster name: hello-world-cluster
     - Service name: hello-world-service
     - Image definitions file: images.json
+    - Open a new browser tab and go to AWS IAM console
+        - Open the Roles tab
+        - Search for codebuild-hello-world-code-build-service-role and choose it
+        - Click on Attach policies
+        - Find AmazonEC2ContainerRegistryPowerUser mark it and click Attach Policy
+        - Go back the CodePipeline Review page
+    - Click on Create pipeline 
+    
+    
+    
         
