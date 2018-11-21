@@ -59,11 +59,35 @@
     - Image definitions file: images.json
     - Open a new browser tab and go to AWS IAM console
         - Open the Roles tab
+        - Refresh the list by clicking  on the Refresh arrows button
         - Search for codebuild-hello-world-code-build-service-role and choose it
         - Click on Attach policies
         - Find AmazonEC2ContainerRegistryPowerUser mark it and click Attach Policy
         - Go back the CodePipeline Review page
-    - Click on Create pipeline 
+    - Click on Create pipeline
+        - Wait for the pipeline release to finish. It will fail in Deploy stage
+        - Check the details you should see this message "The provided role does not have sufficient permissions to access ECS"
+    - Open a new browser tab and go to AWS IAM console
+        - Open the Roles tab
+        - Refresh the list by clicking  on the Refresh arrows button
+        - Search for AWSCodePipelineServiceRole-us-west-2-hello-world-pipeline and choose it
+        - Click on Attach policies
+        - Find AdministratorAccess mark it and click Attach Policy
+        - Go back the CodePipeline Release page
+    - Click Release Change All stages should succeed now
+- Check that the container actually work and will show the hello world message
+    - Open the Amazon ECS page
+    - Choose hello-world-cluster
+    - Under Network Access Click on the security group link
+        - Edit inbound rules
+            - Add All traffic rule
+            - Click on Save Rules
+            - Go back to the cluster page
+    - Open the task tab
+    - Click on the first (and only) task
+    - In the network section you should see the Public IP
+    - Go to it with port 8080
+    
     
     
     
